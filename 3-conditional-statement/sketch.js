@@ -1,3 +1,5 @@
+
+
 //create an empty array called balls
 let balls = [];
 
@@ -7,6 +9,7 @@ let me;
 
 function setup() {
   createCanvas(500, 400);
+  angleMode(DEGREES);
 
   //make one avatar called me
   me = new Avatar(width/2, 300, 3);
@@ -14,7 +17,7 @@ function setup() {
 }
 
 function draw(){
-	background(220);
+	background(255,255,255);
 
   me.drawMe();
   me.moveMe();
@@ -44,14 +47,18 @@ class Avatar {
 	}
 
 	drawMe(){  // draw the running person
-    		stroke("green");
+    		stroke(0,0,0);
         strokeWeight(3);
-    		fill("blue");
-		    ellipse(this.x,this.y,20,20);
-        line(this.x,this.y, this.x, this.y+40);
-        line(this.x, this.y+40, this.x-20, this.y+60);
-        line(this.x, this.y+40, this.x+10, this.y+50);
-        line(this.x+10, this.y+50, this.x+5, this.y+60);
+    		fill(255,255,255);
+		    ellipse(this.x, this.y, 25, 25); //head
+        ellipse(this.x+5, this.y+3, 15,13); //mouth
+        ellipse(this.x-5, this.y-3, 3, 3); //eye
+        line(this.x,this.y+12, this.x, this.y+40); //torso
+        line(this.x, this.y+40, this.x-20, this.y+60); //left leg
+        ellipse(this.x-15, this.y+60, 10, 5); //left shoe
+        line(this.x, this.y+40, this.x+10, this.y+50); //right leg
+        line(this.x+10, this.y+50, this.x+5, this.y+60); //right leg
+        ellipse(this.x+10, this.y+60, 10, 5); //right shoe
         line(this.x, this.y+15, this.x-10, this.y+25);
         line(this.x-10, this.y+25, this.x+10, this.y+35);
 	}
@@ -85,10 +92,11 @@ class Ball {
 
 	// draw a ball on the screen at x,y
 	drawBall(){
-    	stroke(0);
+    	noStroke();
       strokeWeight(1);
-    	fill("red");
-		  ellipse(this.x,this.y,10,10);
+    	fill(128, 170, 255);
+      arc(this.x, this.y, 30, 50, 180, 0);
+		  //ellipse(this.x,this.y,10,10);
 	}
 
 	//update the location of the ball, so it moves across the screen
