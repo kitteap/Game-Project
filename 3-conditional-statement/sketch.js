@@ -5,7 +5,12 @@ let balls = [];
 
 //create a variable to hold your avatar
 let me;
+let mySound;
 
+function preload() {
+  soundFormats('mp3', 'ogg');
+  mySound = loadSound('boing1.mp3');
+}
 
 function setup() {
   createCanvas(500, 400);
@@ -127,9 +132,11 @@ class Ball {
 	}
 
 	//if the ball hits the person, change the speed value to negative (send it in the opposite direction)
-  	bounceBall(){
-    		if (this.x >= me.x-20 && this.x <= me.x+20 && this.y > me.y-40 && this.y < me.y+80){
-      			this.speed = -this.speed;
+  bounceBall(){
+      if (this.x >= me.x-15 && this.x <= me.x+15 && this.y > me.y-40 && this.y < me.y+40){
+          this.speed = -this.speed;
+          mySound.setVolume(0.1);
+          mySound.play();
     		}
   	}
 
